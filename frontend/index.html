@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreZento Matrix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            cyan: '#00f3ff',
+                            pink: '#ff00ff',
+                            green: '#00ff00',
+                            red: '#ff003c',
+                            dark: '#0a0a12',
+                            panel: '#1a1a2e'
+                        }
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 10px #00f3ff, 0 0 20px #00f3ff',
+                        'neon-pink': '0 0 10px #ff00ff, 0 0 20px #ff00ff',
+                        'neon-green': '0 0 10px #00ff00, 0 0 20px #00ff00',
+                        'neon-red': '0 0 10px #ff003c, 0 0 20px #ff003c',
+                    },
+                    keyframes: {
+                        shake: {
+                            '0%, 100%': { transform: 'translate(0, 0) rotate(0)' },
+                            '10%, 30%, 50%, 70%, 90%': { transform: 'translate(-15px, 5px) rotate(-3deg)' },
+                            '20%, 40%, 60%, 80%': { transform: 'translate(15px, -5px) rotate(3deg)' },
+                        },
+                        'epic-shake': {
+                            '0%, 100%': { transform: 'translate(0, 0) rotate(0)' },
+                            '10%, 30%, 50%, 70%, 90%': { transform: 'translate(-50px, 30px) rotate(-5deg) scale(1.05)' },
+                            '20%, 40%, 60%, 80%': { transform: 'translate(50px, -30px) rotate(5deg) scale(1.05)' },
+                        },
+                        'implode': {
+                            '0%': { transform: 'scale(1)', filter: 'brightness(1) contrast(1)' },
+                            '50%': { transform: 'scale(0.5) rotate(10deg)', filter: 'brightness(3) contrast(2) hue-rotate(90deg)' },
+                            '100%': { transform: 'scale(0.01) rotate(-45deg)', filter: 'brightness(10) blur(4px)' }
+                        },
+                        'screen-flash': {
+                            '0%': { backgroundColor: 'rgba(255, 255, 255, 0)' },
+                            '5%': { backgroundColor: 'rgba(255, 255, 255, 1)' },
+                            '20%': { backgroundColor: 'rgba(255, 0, 60, 0.8)' },
+                            '100%': { backgroundColor: 'rgba(0, 0, 0, 0)' }
+                        }
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+                        'epic-shake': 'epic-shake 0.5s cubic-bezier(.36,.07,.19,.97) infinite',
+                        'implode': 'implode 0.8s cubic-bezier(0.5, 0, 1, 1) forwards',
+                        'screen-flash': 'screen-flash 2.5s ease-out forwards'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #05050a;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Prevent scrolling on mobile */
+            perspective: 1200px; /* Add 3D perspective for the explosion */
+        }
+        /* Custom scrollbar for a cleaner look if needed */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a2e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+        }
+        /* Fire text effect */
+        .text-fire {
+            color: #fff;
+            text-shadow:
+                0 -1px 4px #FFF,
+                0 -2px 10px #ff0,
+                0 -10px 20px #ff8000,
+                0 -18px 40px #ff0000;
+            animation: flicker 0.1s infinite alternate;
+        }
+        @keyframes flicker {
+            0%, 100% { text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #ff0000; }
+            50% { text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -12px 22px #ff8000, 0 -20px 45px #ff0000; }
+        }
+    </style>
+    </head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.js"></script></body>
+</html>
